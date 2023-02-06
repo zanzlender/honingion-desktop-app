@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B3D11737-9670-4E8A-9106-0FB49DD842B9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>HONING_App</RootNamespace>
+    <AssemblyName>HONING_App</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\honingion_logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\GradientPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Database\DatabaseModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\DatabaseModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\DatabaseModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Godisnji_odmori.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Gradovi.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Korisnici.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Korisnicki_racuni.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Materijali_i_sirovine.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Mjerne_jedinice.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Odjeli.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Poduzeca.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Poslovni_partneri.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Proizvodi.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Slobodni_dani.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Vrste_korisnika.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Vrste_partnera.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Zapisnici_skladista.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Baza zaposlenika\BazaZaposlenikaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Baza zaposlenika\BazaZaposlenikaForm.Designer.cs">
+      <DependentUpon>BazaZaposlenikaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Baza zaposlenika\DodajNovogZaposlenikaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Baza zaposlenika\DodajNovogZaposlenikaForm.Designer.cs">
+      <DependentUpon>DodajNovogZaposlenikaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Baza zaposlenika\IzmijeniZaposlenikaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Baza zaposlenika\IzmijeniZaposlenikaForm.Designer.cs">
+      <DependentUpon>IzmijeniZaposlenikaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Dodavanje poduzeca\BazaPoduzecaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Dodavanje poduzeca\BazaPoduzecaForm.Designer.cs">
+      <DependentUpon>BazaPoduzecaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Dodavanje poduzeca\DodajPoduzeceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Dodavanje poduzeca\DodajPoduzeceForm.Designer.cs">
+      <DependentUpon>DodajPoduzeceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Dodavanje poduzeca\IzmijeniPoduzeceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Dodavanje poduzeca\IzmijeniPoduzeceForm.Designer.cs">
+      <DependentUpon>IzmijeniPoduzeceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Godisnji odmori\GodisnjiOdmoriForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Godisnji odmori\GodisnjiOdmoriForm.Designer.cs">
+      <DependentUpon>GodisnjiOdmoriForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Godisnji odmori\ZahtjevGodisnjiOdmorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Godisnji odmori\ZahtjevGodisnjiOdmorForm.Designer.cs">
+      <DependentUpon>ZahtjevGodisnjiOdmorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Home\HomeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Home\HomeForm.Designer.cs">
+      <DependentUpon>HomeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Home\SlikaProfilaUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forme\Home\SlikaProfilaUC.Designer.cs">
+      <DependentUpon>SlikaProfilaUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Login\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Login\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Exceptions\Validacije.cs" />
+    <Compile Include="Forme\MaterijaliSirovineForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\MaterijaliSirovineForm.Designer.cs">
+      <DependentUpon>MaterijaliSirovineForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Novosti\NovostiObavijestiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Novosti\NovostiObavijestiForm.Designer.cs">
+      <DependentUpon>NovostiObavijestiForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Skladiste\IzmjenaMaterijalaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Skladiste\IzmjenaMaterijalaForm.Designer.cs">
+      <DependentUpon>IzmjenaMaterijalaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Skladiste\OtpremaStavkiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Skladiste\OtpremaStavkiForm.Designer.cs">
+      <DependentUpon>OtpremaStavkiForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Skladiste\SkladisteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Skladiste\SkladisteForm.Designer.cs">
+      <DependentUpon>SkladisteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Skladiste\UnosMaterijalaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Skladiste\UnosMaterijalaForm.Designer.cs">
+      <DependentUpon>UnosMaterijalaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Skladiste\UnosStavkeSkladistaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Skladiste\UnosStavkeSkladistaForm.Designer.cs">
+      <DependentUpon>UnosStavkeSkladistaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Klase\GeneratorLozinki.cs" />
+    <Compile Include="Klase\GodisnjiOdmoriNeobradeni.cs" />
+    <Compile Include="Klase\Gradovi.code.cs" />
+    <Compile Include="Klase\MaterijaliSirovineView.cs" />
+    <Compile Include="Klase\Odjeli.code.cs" />
+    <Compile Include="Klase\Poduzeca.code.cs" />
+    <Compile Include="Klase\SkladisteView.cs" />
+    <Compile Include="Klase\SviGodisnjiOdmoriView.cs" />
+    <Compile Include="Klase\Vrste_korisnika.code.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forme\Baza zaposlenika\BazaZaposlenikaForm.resx">
+      <DependentUpon>BazaZaposlenikaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Baza zaposlenika\DodajNovogZaposlenikaForm.resx">
+      <DependentUpon>DodajNovogZaposlenikaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Baza zaposlenika\IzmijeniZaposlenikaForm.resx">
+      <DependentUpon>IzmijeniZaposlenikaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Dodavanje poduzeca\BazaPoduzecaForm.resx">
+      <DependentUpon>BazaPoduzecaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Dodavanje poduzeca\DodajPoduzeceForm.resx">
+      <DependentUpon>DodajPoduzeceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Dodavanje poduzeca\IzmijeniPoduzeceForm.resx">
+      <DependentUpon>IzmijeniPoduzeceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Godisnji odmori\GodisnjiOdmoriForm.resx">
+      <DependentUpon>GodisnjiOdmoriForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Godisnji odmori\ZahtjevGodisnjiOdmorForm.resx">
+      <DependentUpon>ZahtjevGodisnjiOdmorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Home\HomeForm.resx">
+      <DependentUpon>HomeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Home\SlikaProfilaUC.resx">
+      <DependentUpon>SlikaProfilaUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Login\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\MaterijaliSirovineForm.resx">
+      <DependentUpon>MaterijaliSirovineForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Novosti\NovostiObavijestiForm.resx">
+      <DependentUpon>NovostiObavijestiForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Skladiste\IzmjenaMaterijalaForm.resx">
+      <DependentUpon>IzmjenaMaterijalaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Skladiste\OtpremaStavkiForm.resx">
+      <DependentUpon>OtpremaStavkiForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Skladiste\SkladisteForm.resx">
+      <DependentUpon>SkladisteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Skladiste\UnosMaterijalaForm.resx">
+      <DependentUpon>UnosMaterijalaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Skladiste\UnosStavkeSkladistaForm.resx">
+      <DependentUpon>UnosStavkeSkladistaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EntityDeploy Include="Database\DatabaseModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DatabaseModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Database\DatabaseModel.edmx.diagram">
+      <DependentUpon>DatabaseModel.edmx</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Autentifikacija\Autentifikacija.csproj">
+      <Project>{19595092-6dad-49ec-91ec-935db8b5d0ad}</Project>
+      <Name>Autentifikacija</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KalkulatorGodisnjeg\KalkulatorGodisnjeg\KalkulatorGodisnjeg.csproj">
+      <Project>{8eab6573-cfa9-47be-bb90-906c2a4cc211}</Project>
+      <Name>KalkulatorGodisnjeg</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\honingion_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\outline_cancel_black_24dp.png" />
+    <EmbeddedResource Include="Resources\outline_close_black_48dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database\DatabaseModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DatabaseModel.edmx</DependentUpon>
+      <LastGenOutput>DatabaseModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Database\DatabaseModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DatabaseModel.edmx</DependentUpon>
+      <LastGenOutput>DatabaseModel.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\pozdaina2.png" />
+    <None Include="Resources\pozadina.png" />
+    <None Include="Resources\honingion_logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="dot-net-transitions">
+      <Version>1.2.1</Version>
+    </PackageReference>
+    <PackageReference Include="EntityFramework.SqlServerCompact">
+      <Version>6.4.4</Version>
+    </PackageReference>
+    <PackageReference Include="FontAwesome.Sharp">
+      <Version>5.15.3</Version>
+    </PackageReference>
+    <PackageReference Include="MetroModernUI">
+      <Version>1.4.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications">
+      <Version>7.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="System.Data.SqlClient">
+      <Version>4.8.2</Version>
+    </PackageReference>
+    <PackageReference Include="System.Linq">
+      <Version>4.3.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Forme\Baza poduzeca\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

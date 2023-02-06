@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c1db07135acf4e919f3251241510cd7d" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="Model.Gradovi" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Korisnici" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Korisnicki_racuni" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Odjeli" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Poduzeca" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Vrste_korisnika" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_Korisnici_Gradovi" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Korisnici_Korisnicki_racuni" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Korisnici_Odjeli" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Korisnici_Poduzeca" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Korisnici_Vrste_korisnika" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Odjeli_Poduzeca" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.Godisnji_odmori" Width="1.5" PointX="7.5" PointY="12" />
+        <EntityTypeShape EntityType="Model.Materijali_i_sirovine" Width="1.5" PointX="6" PointY="1" />
+        <EntityTypeShape EntityType="Model.Mjerne_jedinice" Width="1.5" PointX="3.75" PointY="19.375" />
+        <EntityTypeShape EntityType="Model.Poslovni_partneri" Width="1.5" PointX="8.25" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.Proizvodi" Width="1.5" PointX="3" PointY="15.25" />
+        <EntityTypeShape EntityType="Model.Slobodni_dani" Width="1.5" PointX="7.5" PointY="5.625" />
+        <EntityTypeShape EntityType="Model.Vrste_partnera" Width="1.5" PointX="6" PointY="15.875" />
+        <EntityTypeShape EntityType="Model.Zapisnici_skladista" Width="1.5" PointX="10.25" PointY="7.875" />
+        <AssociationConnector Association="Model.FK_Godisnji_odmori_Korisnici" />
+        <AssociationConnector Association="Model.FK_Godisnji_odmori_Korisnici2" />
+        <AssociationConnector Association="Model.FK_Poslovni_partneri_Gradovi" />
+        <AssociationConnector Association="Model.FK_Slobodni_dani_Korisnici" />
+        <AssociationConnector Association="Model.FK_Zapisnici_skladista_Korisnici" />
+        <AssociationConnector Association="Model.FK_Materijali_i_sirovine_Mjerne_jedinice" />
+        <AssociationConnector Association="Model.FK_Materijali_i_sirovine_Poduzeca" />
+        <AssociationConnector Association="Model.FK_Materijali_i_sirovine_Poslovni_partneri" />
+        <AssociationConnector Association="Model.FK_Zapisnici_skladista_Materijali_i_sirovine" />
+        <AssociationConnector Association="Model.FK_Poslovni_partneri_Poduzeca" />
+        <AssociationConnector Association="Model.FK_Proizvodi_Poduzeca" />
+        <AssociationConnector Association="Model.FK_Poslovni_partneri_Vrste_partnera" />
+        <AssociationConnector Association="Model.FK_Zapisnici_skladista_Proizvodi" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

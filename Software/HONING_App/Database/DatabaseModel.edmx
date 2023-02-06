@@ -1,0 +1,1164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Godisnji_odmori">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="korisnik" Type="int" Nullable="false" />
+          <Property Name="datumOd" Type="date" Nullable="false" />
+          <Property Name="datumDo" Type="date" Nullable="false" />
+          <Property Name="odobrio" Type="int" />
+          <Property Name="odobreno" Type="bit" />
+        </EntityType>
+        <EntityType Name="Gradovi">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="postanskiBroj" Type="int" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Korisnici">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ime" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="prezime" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="oib" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="kontaktBroj" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="adresa" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="prebivaliste" Type="int" Nullable="false" />
+          <Property Name="uloga" Type="int" Nullable="false" />
+          <Property Name="korisnickiRacun" Type="int" Nullable="false" />
+          <Property Name="odjel" Type="int" Nullable="false" />
+          <Property Name="poduzece" Type="int" />
+        </EntityType>
+        <EntityType Name="Korisnicki_racuni">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lozinka" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Materijali_i_sirovine">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naziv" Type="nchar" MaxLength="255" Nullable="false" />
+          <Property Name="mjernaJedinica" Type="int" Nullable="false" />
+          <Property Name="kolicina" Type="int" Nullable="false" />
+          <Property Name="poslovniPartner" Type="int" Nullable="false" />
+          <Property Name="specifikacija" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="poduzece" Type="int" Nullable="false" />
+          <Property Name="prikazi" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mjerne_jedinice">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naziv" Type="nchar" MaxLength="255" Nullable="false" />
+          <Property Name="oznaka" Type="nchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Odjeli">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="opis" Type="varchar" MaxLength="255" />
+          <Property Name="poduzece" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Poduzeca">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="oib" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="voditelj" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Poslovni_partneri">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="imePoduzeca" Type="nchar" MaxLength="255" />
+          <Property Name="OIB" Type="nchar" MaxLength="12" />
+          <Property Name="imeDirektora" Type="nchar" MaxLength="255" Nullable="false" />
+          <Property Name="prezimeDirektora" Type="nchar" MaxLength="255" Nullable="false" />
+          <Property Name="kontaktBroj" Type="nchar" MaxLength="255" Nullable="false" />
+          <Property Name="email" Type="nchar" MaxLength="255" Nullable="false" />
+          <Property Name="adresa" Type="nchar" MaxLength="255" Nullable="false" />
+          <Property Name="mjesto" Type="int" Nullable="false" />
+          <Property Name="vrstePartnera" Type="int" Nullable="false" />
+          <Property Name="poduzece" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Proizvodi">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naziv" Type="nchar" MaxLength="255" Nullable="false" />
+          <Property Name="specifikacija" Type="nchar" MaxLength="255" Nullable="false" />
+          <Property Name="cijena" Type="float" Nullable="false" />
+          <Property Name="poduzece" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Slobodni_dani">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="korisnik" Type="int" Nullable="false" />
+          <Property Name="slobodniDani" Type="int" Nullable="false" />
+          <Property Name="iskoristeniDani" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vrste_korisnika">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vrste_partnera">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naziv" Type="nchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Zapisnici_skladista">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="proizvod" Type="int" />
+          <Property Name="materijal" Type="int" />
+          <Property Name="kolicina" Type="int" Nullable="false" />
+          <Property Name="izdano" Type="bit" Nullable="false" />
+          <Property Name="zabiljezio" Type="int" Nullable="false" />
+          <Property Name="datumVrijeme" Type="datetime" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <Association Name="FK_Godisnji_odmori_Korisnici">
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="1" />
+          <End Role="Godisnji_odmori" Type="Self.Godisnji_odmori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnici">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Godisnji_odmori">
+              <PropertyRef Name="korisnik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Godisnji_odmori_Korisnici2">
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="0..1" />
+          <End Role="Godisnji_odmori" Type="Self.Godisnji_odmori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnici">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Godisnji_odmori">
+              <PropertyRef Name="odobrio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Korisnici_Gradovi">
+          <End Role="Gradovi" Type="Self.Gradovi" Multiplicity="1" />
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gradovi">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Korisnici">
+              <PropertyRef Name="prebivaliste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Korisnici_Korisnicki_racuni">
+          <End Role="Korisnicki_racuni" Type="Self.Korisnicki_racuni" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnicki_racuni">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Korisnici">
+              <PropertyRef Name="korisnickiRacun" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Korisnici_Odjeli">
+          <End Role="Odjeli" Type="Self.Odjeli" Multiplicity="1" />
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Odjeli">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Korisnici">
+              <PropertyRef Name="odjel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Korisnici_Poduzeca">
+          <End Role="Poduzeca" Type="Self.Poduzeca" Multiplicity="0..1" />
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Poduzeca">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Korisnici">
+              <PropertyRef Name="poduzece" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Korisnici_Vrste_korisnika">
+          <End Role="Vrste_korisnika" Type="Self.Vrste_korisnika" Multiplicity="1" />
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vrste_korisnika">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Korisnici">
+              <PropertyRef Name="uloga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Materijali_i_sirovine_Mjerne_jedinice">
+          <End Role="Mjerne_jedinice" Type="Self.Mjerne_jedinice" Multiplicity="1" />
+          <End Role="Materijali_i_sirovine" Type="Self.Materijali_i_sirovine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mjerne_jedinice">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Materijali_i_sirovine">
+              <PropertyRef Name="mjernaJedinica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Materijali_i_sirovine_Poduzeca">
+          <End Role="Poduzeca" Type="Self.Poduzeca" Multiplicity="1" />
+          <End Role="Materijali_i_sirovine" Type="Self.Materijali_i_sirovine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Poduzeca">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Materijali_i_sirovine">
+              <PropertyRef Name="poduzece" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Materijali_i_sirovine_Poslovni_partneri">
+          <End Role="Poslovni_partneri" Type="Self.Poslovni_partneri" Multiplicity="1" />
+          <End Role="Materijali_i_sirovine" Type="Self.Materijali_i_sirovine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Poslovni_partneri">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Materijali_i_sirovine">
+              <PropertyRef Name="poslovniPartner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Odjeli_Poduzeca">
+          <End Role="Poduzeca" Type="Self.Poduzeca" Multiplicity="1" />
+          <End Role="Odjeli" Type="Self.Odjeli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Poduzeca">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Odjeli">
+              <PropertyRef Name="poduzece" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Poslovni_partneri_Gradovi">
+          <End Role="Gradovi" Type="Self.Gradovi" Multiplicity="1" />
+          <End Role="Poslovni_partneri" Type="Self.Poslovni_partneri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gradovi">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Poslovni_partneri">
+              <PropertyRef Name="mjesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Poslovni_partneri_Poduzeca">
+          <End Role="Poduzeca" Type="Self.Poduzeca" Multiplicity="1" />
+          <End Role="Poslovni_partneri" Type="Self.Poslovni_partneri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Poduzeca">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Poslovni_partneri">
+              <PropertyRef Name="poduzece" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Poslovni_partneri_Vrste_partnera">
+          <End Role="Vrste_partnera" Type="Self.Vrste_partnera" Multiplicity="1" />
+          <End Role="Poslovni_partneri" Type="Self.Poslovni_partneri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vrste_partnera">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Poslovni_partneri">
+              <PropertyRef Name="vrstePartnera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proizvodi_Poduzeca">
+          <End Role="Poduzeca" Type="Self.Poduzeca" Multiplicity="1" />
+          <End Role="Proizvodi" Type="Self.Proizvodi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Poduzeca">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Proizvodi">
+              <PropertyRef Name="poduzece" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Slobodni_dani_Korisnici">
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="1" />
+          <End Role="Slobodni_dani" Type="Self.Slobodni_dani" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnici">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Slobodni_dani">
+              <PropertyRef Name="korisnik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zapisnici_skladista_Korisnici">
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="1" />
+          <End Role="Zapisnici_skladista" Type="Self.Zapisnici_skladista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnici">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zapisnici_skladista">
+              <PropertyRef Name="zabiljezio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zapisnici_skladista_Materijali_i_sirovine">
+          <End Role="Materijali_i_sirovine" Type="Self.Materijali_i_sirovine" Multiplicity="0..1" />
+          <End Role="Zapisnici_skladista" Type="Self.Zapisnici_skladista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materijali_i_sirovine">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zapisnici_skladista">
+              <PropertyRef Name="materijal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zapisnici_skladista_Proizvodi">
+          <End Role="Proizvodi" Type="Self.Proizvodi" Multiplicity="0..1" />
+          <End Role="Zapisnici_skladista" Type="Self.Zapisnici_skladista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proizvodi">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zapisnici_skladista">
+              <PropertyRef Name="proizvod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Godisnji_odmori" EntityType="Self.Godisnji_odmori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gradovi" EntityType="Self.Gradovi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Korisnici" EntityType="Self.Korisnici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Korisnicki_racuni" EntityType="Self.Korisnicki_racuni" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Materijali_i_sirovine" EntityType="Self.Materijali_i_sirovine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mjerne_jedinice" EntityType="Self.Mjerne_jedinice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Odjeli" EntityType="Self.Odjeli" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Poduzeca" EntityType="Self.Poduzeca" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Poslovni_partneri" EntityType="Self.Poslovni_partneri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proizvodi" EntityType="Self.Proizvodi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Slobodni_dani" EntityType="Self.Slobodni_dani" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vrste_korisnika" EntityType="Self.Vrste_korisnika" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vrste_partnera" EntityType="Self.Vrste_partnera" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zapisnici_skladista" EntityType="Self.Zapisnici_skladista" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Godisnji_odmori_Korisnici" Association="Self.FK_Godisnji_odmori_Korisnici">
+            <End Role="Korisnici" EntitySet="Korisnici" />
+            <End Role="Godisnji_odmori" EntitySet="Godisnji_odmori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Godisnji_odmori_Korisnici2" Association="Self.FK_Godisnji_odmori_Korisnici2">
+            <End Role="Korisnici" EntitySet="Korisnici" />
+            <End Role="Godisnji_odmori" EntitySet="Godisnji_odmori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Korisnici_Gradovi" Association="Self.FK_Korisnici_Gradovi">
+            <End Role="Gradovi" EntitySet="Gradovi" />
+            <End Role="Korisnici" EntitySet="Korisnici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Korisnici_Korisnicki_racuni" Association="Self.FK_Korisnici_Korisnicki_racuni">
+            <End Role="Korisnicki_racuni" EntitySet="Korisnicki_racuni" />
+            <End Role="Korisnici" EntitySet="Korisnici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Korisnici_Odjeli" Association="Self.FK_Korisnici_Odjeli">
+            <End Role="Odjeli" EntitySet="Odjeli" />
+            <End Role="Korisnici" EntitySet="Korisnici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Korisnici_Poduzeca" Association="Self.FK_Korisnici_Poduzeca">
+            <End Role="Poduzeca" EntitySet="Poduzeca" />
+            <End Role="Korisnici" EntitySet="Korisnici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Korisnici_Vrste_korisnika" Association="Self.FK_Korisnici_Vrste_korisnika">
+            <End Role="Vrste_korisnika" EntitySet="Vrste_korisnika" />
+            <End Role="Korisnici" EntitySet="Korisnici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Materijali_i_sirovine_Mjerne_jedinice" Association="Self.FK_Materijali_i_sirovine_Mjerne_jedinice">
+            <End Role="Mjerne_jedinice" EntitySet="Mjerne_jedinice" />
+            <End Role="Materijali_i_sirovine" EntitySet="Materijali_i_sirovine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Materijali_i_sirovine_Poduzeca" Association="Self.FK_Materijali_i_sirovine_Poduzeca">
+            <End Role="Poduzeca" EntitySet="Poduzeca" />
+            <End Role="Materijali_i_sirovine" EntitySet="Materijali_i_sirovine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Materijali_i_sirovine_Poslovni_partneri" Association="Self.FK_Materijali_i_sirovine_Poslovni_partneri">
+            <End Role="Poslovni_partneri" EntitySet="Poslovni_partneri" />
+            <End Role="Materijali_i_sirovine" EntitySet="Materijali_i_sirovine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Odjeli_Poduzeca" Association="Self.FK_Odjeli_Poduzeca">
+            <End Role="Poduzeca" EntitySet="Poduzeca" />
+            <End Role="Odjeli" EntitySet="Odjeli" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Poslovni_partneri_Gradovi" Association="Self.FK_Poslovni_partneri_Gradovi">
+            <End Role="Gradovi" EntitySet="Gradovi" />
+            <End Role="Poslovni_partneri" EntitySet="Poslovni_partneri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Poslovni_partneri_Poduzeca" Association="Self.FK_Poslovni_partneri_Poduzeca">
+            <End Role="Poduzeca" EntitySet="Poduzeca" />
+            <End Role="Poslovni_partneri" EntitySet="Poslovni_partneri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Poslovni_partneri_Vrste_partnera" Association="Self.FK_Poslovni_partneri_Vrste_partnera">
+            <End Role="Vrste_partnera" EntitySet="Vrste_partnera" />
+            <End Role="Poslovni_partneri" EntitySet="Poslovni_partneri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proizvodi_Poduzeca" Association="Self.FK_Proizvodi_Poduzeca">
+            <End Role="Poduzeca" EntitySet="Poduzeca" />
+            <End Role="Proizvodi" EntitySet="Proizvodi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Slobodni_dani_Korisnici" Association="Self.FK_Slobodni_dani_Korisnici">
+            <End Role="Korisnici" EntitySet="Korisnici" />
+            <End Role="Slobodni_dani" EntitySet="Slobodni_dani" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zapisnici_skladista_Korisnici" Association="Self.FK_Zapisnici_skladista_Korisnici">
+            <End Role="Korisnici" EntitySet="Korisnici" />
+            <End Role="Zapisnici_skladista" EntitySet="Zapisnici_skladista" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zapisnici_skladista_Materijali_i_sirovine" Association="Self.FK_Zapisnici_skladista_Materijali_i_sirovine">
+            <End Role="Materijali_i_sirovine" EntitySet="Materijali_i_sirovine" />
+            <End Role="Zapisnici_skladista" EntitySet="Zapisnici_skladista" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zapisnici_skladista_Proizvodi" Association="Self.FK_Zapisnici_skladista_Proizvodi">
+            <End Role="Proizvodi" EntitySet="Proizvodi" />
+            <End Role="Zapisnici_skladista" EntitySet="Zapisnici_skladista" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Gradovi">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="postanskiBroj" Type="Int32" Nullable="false" />
+          <Property Name="naziv" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Korisnici" Relationship="Self.FK_Korisnici_Gradovi" FromRole="Gradovi" ToRole="Korisnici" />
+          <NavigationProperty Name="Poslovni_partneri" Relationship="Model.FK_Poslovni_partneri_Gradovi" FromRole="Gradovi" ToRole="Poslovni_partneri" />
+        </EntityType>
+        <EntityType Name="Korisnici">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ime" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prezime" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="oib" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kontaktBroj" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="adresa" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prebivaliste" Type="Int32" Nullable="false" />
+          <Property Name="uloga" Type="Int32" Nullable="false" />
+          <Property Name="korisnickiRacun" Type="Int32" Nullable="false" />
+          <Property Name="odjel" Type="Int32" Nullable="false" />
+          <Property Name="poduzece" Type="Int32" />
+          <NavigationProperty Name="Gradovi" Relationship="Self.FK_Korisnici_Gradovi" FromRole="Korisnici" ToRole="Gradovi" />
+          <NavigationProperty Name="Korisnicki_racuni" Relationship="Self.FK_Korisnici_Korisnicki_racuni" FromRole="Korisnici" ToRole="Korisnicki_racuni" />
+          <NavigationProperty Name="Odjeli" Relationship="Self.FK_Korisnici_Odjeli" FromRole="Korisnici" ToRole="Odjeli" />
+          <NavigationProperty Name="Poduzeca" Relationship="Self.FK_Korisnici_Poduzeca" FromRole="Korisnici" ToRole="Poduzeca" />
+          <NavigationProperty Name="Vrste_korisnika" Relationship="Self.FK_Korisnici_Vrste_korisnika" FromRole="Korisnici" ToRole="Vrste_korisnika" />
+          <NavigationProperty Name="Godisnji_odmori" Relationship="Model.FK_Godisnji_odmori_Korisnici" FromRole="Korisnici" ToRole="Godisnji_odmori" />
+          <NavigationProperty Name="Godisnji_odmori1" Relationship="Model.FK_Godisnji_odmori_Korisnici2" FromRole="Korisnici" ToRole="Godisnji_odmori" />
+          <NavigationProperty Name="Slobodni_dani" Relationship="Model.FK_Slobodni_dani_Korisnici" FromRole="Korisnici" ToRole="Slobodni_dani" />
+          <NavigationProperty Name="Zapisnici_skladista" Relationship="Model.FK_Zapisnici_skladista_Korisnici" FromRole="Korisnici" ToRole="Zapisnici_skladista" />
+        </EntityType>
+        <EntityType Name="Korisnicki_racuni">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lozinka" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Korisnici" Relationship="Self.FK_Korisnici_Korisnicki_racuni" FromRole="Korisnicki_racuni" ToRole="Korisnici" />
+        </EntityType>
+        <EntityType Name="Odjeli">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="opis" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="poduzece" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Korisnici" Relationship="Self.FK_Korisnici_Odjeli" FromRole="Odjeli" ToRole="Korisnici" />
+          <NavigationProperty Name="Poduzeca" Relationship="Self.FK_Odjeli_Poduzeca" FromRole="Odjeli" ToRole="Poduzeca" />
+        </EntityType>
+        <EntityType Name="Poduzeca">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="oib" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="voditelj" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Korisnici" Relationship="Self.FK_Korisnici_Poduzeca" FromRole="Poduzeca" ToRole="Korisnici" />
+          <NavigationProperty Name="Odjeli" Relationship="Self.FK_Odjeli_Poduzeca" FromRole="Poduzeca" ToRole="Odjeli" />
+          <NavigationProperty Name="Materijali_i_sirovine" Relationship="Model.FK_Materijali_i_sirovine_Poduzeca" FromRole="Poduzeca" ToRole="Materijali_i_sirovine" />
+          <NavigationProperty Name="Poslovni_partneri" Relationship="Model.FK_Poslovni_partneri_Poduzeca" FromRole="Poduzeca" ToRole="Poslovni_partneri" />
+          <NavigationProperty Name="Proizvodi" Relationship="Model.FK_Proizvodi_Poduzeca" FromRole="Poduzeca" ToRole="Proizvodi" />
+        </EntityType>
+        <EntityType Name="Vrste_korisnika">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Korisnici" Relationship="Self.FK_Korisnici_Vrste_korisnika" FromRole="Vrste_korisnika" ToRole="Korisnici" />
+        </EntityType>
+        <Association Name="FK_Korisnici_Gradovi">
+          <End Role="Gradovi" Type="Self.Gradovi" Multiplicity="1" />
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gradovi">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Korisnici">
+              <PropertyRef Name="prebivaliste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Korisnici_Korisnicki_racuni">
+          <End Role="Korisnicki_racuni" Type="Self.Korisnicki_racuni" Multiplicity="1" />
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnicki_racuni">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Korisnici">
+              <PropertyRef Name="korisnickiRacun" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Korisnici_Odjeli">
+          <End Role="Odjeli" Type="Self.Odjeli" Multiplicity="1" />
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Odjeli">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Korisnici">
+              <PropertyRef Name="odjel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Korisnici_Poduzeca">
+          <End Role="Poduzeca" Type="Self.Poduzeca" Multiplicity="0..1" />
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Poduzeca">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Korisnici">
+              <PropertyRef Name="poduzece" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Korisnici_Vrste_korisnika">
+          <End Role="Vrste_korisnika" Type="Self.Vrste_korisnika" Multiplicity="1" />
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vrste_korisnika">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Korisnici">
+              <PropertyRef Name="uloga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Odjeli_Poduzeca">
+          <End Role="Poduzeca" Type="Self.Poduzeca" Multiplicity="1" />
+          <End Role="Odjeli" Type="Self.Odjeli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Poduzeca">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Odjeli">
+              <PropertyRef Name="poduzece" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EntitiesBaza" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Gradovi" EntityType="Self.Gradovi" />
+          <EntitySet Name="Korisnici" EntityType="Self.Korisnici" />
+          <EntitySet Name="Korisnicki_racuni" EntityType="Self.Korisnicki_racuni" />
+          <EntitySet Name="Odjeli" EntityType="Self.Odjeli" />
+          <EntitySet Name="Poduzeca" EntityType="Self.Poduzeca" />
+          <EntitySet Name="Vrste_korisnika" EntityType="Self.Vrste_korisnika" />
+          <AssociationSet Name="FK_Korisnici_Gradovi" Association="Self.FK_Korisnici_Gradovi">
+            <End Role="Gradovi" EntitySet="Gradovi" />
+            <End Role="Korisnici" EntitySet="Korisnici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Korisnici_Korisnicki_racuni" Association="Self.FK_Korisnici_Korisnicki_racuni">
+            <End Role="Korisnicki_racuni" EntitySet="Korisnicki_racuni" />
+            <End Role="Korisnici" EntitySet="Korisnici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Korisnici_Odjeli" Association="Self.FK_Korisnici_Odjeli">
+            <End Role="Odjeli" EntitySet="Odjeli" />
+            <End Role="Korisnici" EntitySet="Korisnici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Korisnici_Poduzeca" Association="Self.FK_Korisnici_Poduzeca">
+            <End Role="Poduzeca" EntitySet="Poduzeca" />
+            <End Role="Korisnici" EntitySet="Korisnici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Korisnici_Vrste_korisnika" Association="Self.FK_Korisnici_Vrste_korisnika">
+            <End Role="Vrste_korisnika" EntitySet="Vrste_korisnika" />
+            <End Role="Korisnici" EntitySet="Korisnici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Odjeli_Poduzeca" Association="Self.FK_Odjeli_Poduzeca">
+            <End Role="Poduzeca" EntitySet="Poduzeca" />
+            <End Role="Odjeli" EntitySet="Odjeli" />
+          </AssociationSet>
+          <EntitySet Name="Godisnji_odmori" EntityType="Model.Godisnji_odmori" />
+          <EntitySet Name="Materijali_i_sirovine" EntityType="Model.Materijali_i_sirovine" />
+          <EntitySet Name="Mjerne_jedinice" EntityType="Model.Mjerne_jedinice" />
+          <EntitySet Name="Poslovni_partneri" EntityType="Model.Poslovni_partneri" />
+          <EntitySet Name="Proizvodi" EntityType="Model.Proizvodi" />
+          <EntitySet Name="Slobodni_dani" EntityType="Model.Slobodni_dani" />
+          <EntitySet Name="Vrste_partnera" EntityType="Model.Vrste_partnera" />
+          <EntitySet Name="Zapisnici_skladista" EntityType="Model.Zapisnici_skladista" />
+          <AssociationSet Name="FK_Godisnji_odmori_Korisnici" Association="Model.FK_Godisnji_odmori_Korisnici">
+            <End Role="Korisnici" EntitySet="Korisnici" />
+            <End Role="Godisnji_odmori" EntitySet="Godisnji_odmori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Godisnji_odmori_Korisnici2" Association="Model.FK_Godisnji_odmori_Korisnici2">
+            <End Role="Korisnici" EntitySet="Korisnici" />
+            <End Role="Godisnji_odmori" EntitySet="Godisnji_odmori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Poslovni_partneri_Gradovi" Association="Model.FK_Poslovni_partneri_Gradovi">
+            <End Role="Gradovi" EntitySet="Gradovi" />
+            <End Role="Poslovni_partneri" EntitySet="Poslovni_partneri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Slobodni_dani_Korisnici" Association="Model.FK_Slobodni_dani_Korisnici">
+            <End Role="Korisnici" EntitySet="Korisnici" />
+            <End Role="Slobodni_dani" EntitySet="Slobodni_dani" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zapisnici_skladista_Korisnici" Association="Model.FK_Zapisnici_skladista_Korisnici">
+            <End Role="Korisnici" EntitySet="Korisnici" />
+            <End Role="Zapisnici_skladista" EntitySet="Zapisnici_skladista" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Materijali_i_sirovine_Mjerne_jedinice" Association="Model.FK_Materijali_i_sirovine_Mjerne_jedinice">
+            <End Role="Mjerne_jedinice" EntitySet="Mjerne_jedinice" />
+            <End Role="Materijali_i_sirovine" EntitySet="Materijali_i_sirovine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Materijali_i_sirovine_Poduzeca" Association="Model.FK_Materijali_i_sirovine_Poduzeca">
+            <End Role="Poduzeca" EntitySet="Poduzeca" />
+            <End Role="Materijali_i_sirovine" EntitySet="Materijali_i_sirovine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Materijali_i_sirovine_Poslovni_partneri" Association="Model.FK_Materijali_i_sirovine_Poslovni_partneri">
+            <End Role="Poslovni_partneri" EntitySet="Poslovni_partneri" />
+            <End Role="Materijali_i_sirovine" EntitySet="Materijali_i_sirovine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zapisnici_skladista_Materijali_i_sirovine" Association="Model.FK_Zapisnici_skladista_Materijali_i_sirovine">
+            <End Role="Materijali_i_sirovine" EntitySet="Materijali_i_sirovine" />
+            <End Role="Zapisnici_skladista" EntitySet="Zapisnici_skladista" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Poslovni_partneri_Poduzeca" Association="Model.FK_Poslovni_partneri_Poduzeca">
+            <End Role="Poduzeca" EntitySet="Poduzeca" />
+            <End Role="Poslovni_partneri" EntitySet="Poslovni_partneri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proizvodi_Poduzeca" Association="Model.FK_Proizvodi_Poduzeca">
+            <End Role="Poduzeca" EntitySet="Poduzeca" />
+            <End Role="Proizvodi" EntitySet="Proizvodi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Poslovni_partneri_Vrste_partnera" Association="Model.FK_Poslovni_partneri_Vrste_partnera">
+            <End Role="Vrste_partnera" EntitySet="Vrste_partnera" />
+            <End Role="Poslovni_partneri" EntitySet="Poslovni_partneri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zapisnici_skladista_Proizvodi" Association="Model.FK_Zapisnici_skladista_Proizvodi">
+            <End Role="Proizvodi" EntitySet="Proizvodi" />
+            <End Role="Zapisnici_skladista" EntitySet="Zapisnici_skladista" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Godisnji_odmori">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="korisnik" Type="Int32" Nullable="false" />
+          <Property Name="datumOd" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="datumDo" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="odobrio" Type="Int32" />
+          <Property Name="odobreno" Type="Boolean" />
+          <NavigationProperty Name="Korisnici" Relationship="Model.FK_Godisnji_odmori_Korisnici" FromRole="Godisnji_odmori" ToRole="Korisnici" />
+          <NavigationProperty Name="Korisnici1" Relationship="Model.FK_Godisnji_odmori_Korisnici2" FromRole="Godisnji_odmori" ToRole="Korisnici" />
+        </EntityType>
+        <EntityType Name="Materijali_i_sirovine">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" Nullable="false" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="mjernaJedinica" Type="Int32" Nullable="false" />
+          <Property Name="kolicina" Type="Int32" Nullable="false" />
+          <Property Name="poslovniPartner" Type="Int32" Nullable="false" />
+          <Property Name="specifikacija" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="poduzece" Type="Int32" Nullable="false" />
+          <Property Name="prikazi" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Mjerne_jedinice" Relationship="Model.FK_Materijali_i_sirovine_Mjerne_jedinice" FromRole="Materijali_i_sirovine" ToRole="Mjerne_jedinice" />
+          <NavigationProperty Name="Poduzeca" Relationship="Model.FK_Materijali_i_sirovine_Poduzeca" FromRole="Materijali_i_sirovine" ToRole="Poduzeca" />
+          <NavigationProperty Name="Poslovni_partneri" Relationship="Model.FK_Materijali_i_sirovine_Poslovni_partneri" FromRole="Materijali_i_sirovine" ToRole="Poslovni_partneri" />
+          <NavigationProperty Name="Zapisnici_skladista" Relationship="Model.FK_Zapisnici_skladista_Materijali_i_sirovine" FromRole="Materijali_i_sirovine" ToRole="Zapisnici_skladista" />
+        </EntityType>
+        <EntityType Name="Mjerne_jedinice">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" Nullable="false" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="oznaka" Type="String" Nullable="false" MaxLength="255" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Materijali_i_sirovine" Relationship="Model.FK_Materijali_i_sirovine_Mjerne_jedinice" FromRole="Mjerne_jedinice" ToRole="Materijali_i_sirovine" />
+        </EntityType>
+        <EntityType Name="Poslovni_partneri">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="imePoduzeca" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="OIB" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+          <Property Name="imeDirektora" Type="String" Nullable="false" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="prezimeDirektora" Type="String" Nullable="false" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="kontaktBroj" Type="String" Nullable="false" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="adresa" Type="String" Nullable="false" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="mjesto" Type="Int32" Nullable="false" />
+          <Property Name="vrstePartnera" Type="Int32" Nullable="false" />
+          <Property Name="poduzece" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Gradovi" Relationship="Model.FK_Poslovni_partneri_Gradovi" FromRole="Poslovni_partneri" ToRole="Gradovi" />
+          <NavigationProperty Name="Materijali_i_sirovine" Relationship="Model.FK_Materijali_i_sirovine_Poslovni_partneri" FromRole="Poslovni_partneri" ToRole="Materijali_i_sirovine" />
+          <NavigationProperty Name="Poduzeca" Relationship="Model.FK_Poslovni_partneri_Poduzeca" FromRole="Poslovni_partneri" ToRole="Poduzeca" />
+          <NavigationProperty Name="Vrste_partnera" Relationship="Model.FK_Poslovni_partneri_Vrste_partnera" FromRole="Poslovni_partneri" ToRole="Vrste_partnera" />
+        </EntityType>
+        <EntityType Name="Proizvodi">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" Nullable="false" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="specifikacija" Type="String" Nullable="false" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="cijena" Type="Double" Nullable="false" />
+          <Property Name="poduzece" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Poduzeca" Relationship="Model.FK_Proizvodi_Poduzeca" FromRole="Proizvodi" ToRole="Poduzeca" />
+          <NavigationProperty Name="Zapisnici_skladista" Relationship="Model.FK_Zapisnici_skladista_Proizvodi" FromRole="Proizvodi" ToRole="Zapisnici_skladista" />
+        </EntityType>
+        <EntityType Name="Slobodni_dani">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="korisnik" Type="Int32" Nullable="false" />
+          <Property Name="slobodniDani" Type="Int32" Nullable="false" />
+          <Property Name="iskoristeniDani" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Korisnici" Relationship="Model.FK_Slobodni_dani_Korisnici" FromRole="Slobodni_dani" ToRole="Korisnici" />
+        </EntityType>
+        <EntityType Name="Vrste_partnera">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" Nullable="false" MaxLength="255" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Poslovni_partneri" Relationship="Model.FK_Poslovni_partneri_Vrste_partnera" FromRole="Vrste_partnera" ToRole="Poslovni_partneri" />
+        </EntityType>
+        <EntityType Name="Zapisnici_skladista">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="proizvod" Type="Int32" />
+          <Property Name="materijal" Type="Int32" />
+          <Property Name="kolicina" Type="Int32" Nullable="false" />
+          <Property Name="datumVrijeme" Type="DateTime" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+          <Property Name="izdano" Type="Boolean" Nullable="false" />
+          <Property Name="zabiljezio" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Korisnici" Relationship="Model.FK_Zapisnici_skladista_Korisnici" FromRole="Zapisnici_skladista" ToRole="Korisnici" />
+          <NavigationProperty Name="Materijali_i_sirovine" Relationship="Model.FK_Zapisnici_skladista_Materijali_i_sirovine" FromRole="Zapisnici_skladista" ToRole="Materijali_i_sirovine" />
+          <NavigationProperty Name="Proizvodi" Relationship="Model.FK_Zapisnici_skladista_Proizvodi" FromRole="Zapisnici_skladista" ToRole="Proizvodi" />
+        </EntityType>
+        <Association Name="FK_Godisnji_odmori_Korisnici">
+          <End Type="Model.Korisnici" Role="Korisnici" Multiplicity="1" />
+          <End Type="Model.Godisnji_odmori" Role="Godisnji_odmori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnici">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Godisnji_odmori">
+              <PropertyRef Name="korisnik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Godisnji_odmori_Korisnici2">
+          <End Type="Model.Korisnici" Role="Korisnici" Multiplicity="0..1" />
+          <End Type="Model.Godisnji_odmori" Role="Godisnji_odmori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnici">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Godisnji_odmori">
+              <PropertyRef Name="odobrio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Poslovni_partneri_Gradovi">
+          <End Type="Model.Gradovi" Role="Gradovi" Multiplicity="1" />
+          <End Type="Model.Poslovni_partneri" Role="Poslovni_partneri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gradovi">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Poslovni_partneri">
+              <PropertyRef Name="mjesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Slobodni_dani_Korisnici">
+          <End Type="Model.Korisnici" Role="Korisnici" Multiplicity="1" />
+          <End Type="Model.Slobodni_dani" Role="Slobodni_dani" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnici">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Slobodni_dani">
+              <PropertyRef Name="korisnik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zapisnici_skladista_Korisnici">
+          <End Type="Model.Korisnici" Role="Korisnici" Multiplicity="1" />
+          <End Type="Model.Zapisnici_skladista" Role="Zapisnici_skladista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnici">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zapisnici_skladista">
+              <PropertyRef Name="zabiljezio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Materijali_i_sirovine_Mjerne_jedinice">
+          <End Type="Model.Mjerne_jedinice" Role="Mjerne_jedinice" Multiplicity="1" />
+          <End Type="Model.Materijali_i_sirovine" Role="Materijali_i_sirovine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mjerne_jedinice">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Materijali_i_sirovine">
+              <PropertyRef Name="mjernaJedinica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Materijali_i_sirovine_Poduzeca">
+          <End Type="Model.Poduzeca" Role="Poduzeca" Multiplicity="1" />
+          <End Type="Model.Materijali_i_sirovine" Role="Materijali_i_sirovine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Poduzeca">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Materijali_i_sirovine">
+              <PropertyRef Name="poduzece" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Materijali_i_sirovine_Poslovni_partneri">
+          <End Type="Model.Poslovni_partneri" Role="Poslovni_partneri" Multiplicity="1" />
+          <End Type="Model.Materijali_i_sirovine" Role="Materijali_i_sirovine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Poslovni_partneri">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Materijali_i_sirovine">
+              <PropertyRef Name="poslovniPartner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zapisnici_skladista_Materijali_i_sirovine">
+          <End Type="Model.Materijali_i_sirovine" Role="Materijali_i_sirovine" Multiplicity="0..1" />
+          <End Type="Model.Zapisnici_skladista" Role="Zapisnici_skladista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materijali_i_sirovine">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zapisnici_skladista">
+              <PropertyRef Name="materijal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Poslovni_partneri_Poduzeca">
+          <End Type="Model.Poduzeca" Role="Poduzeca" Multiplicity="1" />
+          <End Type="Model.Poslovni_partneri" Role="Poslovni_partneri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Poduzeca">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Poslovni_partneri">
+              <PropertyRef Name="poduzece" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proizvodi_Poduzeca">
+          <End Type="Model.Poduzeca" Role="Poduzeca" Multiplicity="1" />
+          <End Type="Model.Proizvodi" Role="Proizvodi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Poduzeca">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Proizvodi">
+              <PropertyRef Name="poduzece" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Poslovni_partneri_Vrste_partnera">
+          <End Type="Model.Vrste_partnera" Role="Vrste_partnera" Multiplicity="1" />
+          <End Type="Model.Poslovni_partneri" Role="Poslovni_partneri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vrste_partnera">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Poslovni_partneri">
+              <PropertyRef Name="vrstePartnera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zapisnici_skladista_Proizvodi">
+          <End Type="Model.Proizvodi" Role="Proizvodi" Multiplicity="0..1" />
+          <End Type="Model.Zapisnici_skladista" Role="Zapisnici_skladista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proizvodi">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zapisnici_skladista">
+              <PropertyRef Name="proizvod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="EntitiesBaza">
+          <EntitySetMapping Name="Gradovi">
+            <EntityTypeMapping TypeName="Model.Gradovi">
+              <MappingFragment StoreEntitySet="Gradovi">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="postanskiBroj" ColumnName="postanskiBroj" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Korisnici">
+            <EntityTypeMapping TypeName="Model.Korisnici">
+              <MappingFragment StoreEntitySet="Korisnici">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ime" ColumnName="ime" />
+                <ScalarProperty Name="prezime" ColumnName="prezime" />
+                <ScalarProperty Name="oib" ColumnName="oib" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="kontaktBroj" ColumnName="kontaktBroj" />
+                <ScalarProperty Name="adresa" ColumnName="adresa" />
+                <ScalarProperty Name="prebivaliste" ColumnName="prebivaliste" />
+                <ScalarProperty Name="uloga" ColumnName="uloga" />
+                <ScalarProperty Name="korisnickiRacun" ColumnName="korisnickiRacun" />
+                <ScalarProperty Name="odjel" ColumnName="odjel" />
+                <ScalarProperty Name="poduzece" ColumnName="poduzece" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Korisnicki_racuni">
+            <EntityTypeMapping TypeName="Model.Korisnicki_racuni">
+              <MappingFragment StoreEntitySet="Korisnicki_racuni">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="lozinka" ColumnName="lozinka" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Odjeli">
+            <EntityTypeMapping TypeName="Model.Odjeli">
+              <MappingFragment StoreEntitySet="Odjeli">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="opis" ColumnName="opis" />
+                <ScalarProperty Name="poduzece" ColumnName="poduzece" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Poduzeca">
+            <EntityTypeMapping TypeName="Model.Poduzeca">
+              <MappingFragment StoreEntitySet="Poduzeca">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="oib" ColumnName="oib" />
+                <ScalarProperty Name="voditelj" ColumnName="voditelj" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vrste_korisnika">
+            <EntityTypeMapping TypeName="Model.Vrste_korisnika">
+              <MappingFragment StoreEntitySet="Vrste_korisnika">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Godisnji_odmori">
+            <EntityTypeMapping TypeName="Model.Godisnji_odmori">
+              <MappingFragment StoreEntitySet="Godisnji_odmori">
+                <ScalarProperty Name="odobreno" ColumnName="odobreno" />
+                <ScalarProperty Name="odobrio" ColumnName="odobrio" />
+                <ScalarProperty Name="datumDo" ColumnName="datumDo" />
+                <ScalarProperty Name="datumOd" ColumnName="datumOd" />
+                <ScalarProperty Name="korisnik" ColumnName="korisnik" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Materijali_i_sirovine">
+            <EntityTypeMapping TypeName="Model.Materijali_i_sirovine">
+              <MappingFragment StoreEntitySet="Materijali_i_sirovine">
+                <ScalarProperty Name="prikazi" ColumnName="prikazi" />
+                <ScalarProperty Name="poduzece" ColumnName="poduzece" />
+                <ScalarProperty Name="specifikacija" ColumnName="specifikacija" />
+                <ScalarProperty Name="poslovniPartner" ColumnName="poslovniPartner" />
+                <ScalarProperty Name="kolicina" ColumnName="kolicina" />
+                <ScalarProperty Name="mjernaJedinica" ColumnName="mjernaJedinica" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mjerne_jedinice">
+            <EntityTypeMapping TypeName="Model.Mjerne_jedinice">
+              <MappingFragment StoreEntitySet="Mjerne_jedinice">
+                <ScalarProperty Name="oznaka" ColumnName="oznaka" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Poslovni_partneri">
+            <EntityTypeMapping TypeName="Model.Poslovni_partneri">
+              <MappingFragment StoreEntitySet="Poslovni_partneri">
+                <ScalarProperty Name="poduzece" ColumnName="poduzece" />
+                <ScalarProperty Name="vrstePartnera" ColumnName="vrstePartnera" />
+                <ScalarProperty Name="mjesto" ColumnName="mjesto" />
+                <ScalarProperty Name="adresa" ColumnName="adresa" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="kontaktBroj" ColumnName="kontaktBroj" />
+                <ScalarProperty Name="prezimeDirektora" ColumnName="prezimeDirektora" />
+                <ScalarProperty Name="imeDirektora" ColumnName="imeDirektora" />
+                <ScalarProperty Name="OIB" ColumnName="OIB" />
+                <ScalarProperty Name="imePoduzeca" ColumnName="imePoduzeca" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proizvodi">
+            <EntityTypeMapping TypeName="Model.Proizvodi">
+              <MappingFragment StoreEntitySet="Proizvodi">
+                <ScalarProperty Name="poduzece" ColumnName="poduzece" />
+                <ScalarProperty Name="cijena" ColumnName="cijena" />
+                <ScalarProperty Name="specifikacija" ColumnName="specifikacija" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Slobodni_dani">
+            <EntityTypeMapping TypeName="Model.Slobodni_dani">
+              <MappingFragment StoreEntitySet="Slobodni_dani">
+                <ScalarProperty Name="iskoristeniDani" ColumnName="iskoristeniDani" />
+                <ScalarProperty Name="slobodniDani" ColumnName="slobodniDani" />
+                <ScalarProperty Name="korisnik" ColumnName="korisnik" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vrste_partnera">
+            <EntityTypeMapping TypeName="Model.Vrste_partnera">
+              <MappingFragment StoreEntitySet="Vrste_partnera">
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zapisnici_skladista">
+            <EntityTypeMapping TypeName="Model.Zapisnici_skladista">
+              <MappingFragment StoreEntitySet="Zapisnici_skladista">
+                <ScalarProperty Name="zabiljezio" ColumnName="zabiljezio" />
+                <ScalarProperty Name="izdano" ColumnName="izdano" />
+                <ScalarProperty Name="datumVrijeme" ColumnName="datumVrijeme" />
+                <ScalarProperty Name="kolicina" ColumnName="kolicina" />
+                <ScalarProperty Name="materijal" ColumnName="materijal" />
+                <ScalarProperty Name="proizvod" ColumnName="proizvod" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

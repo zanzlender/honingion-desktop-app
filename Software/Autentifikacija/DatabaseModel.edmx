@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Korisnici">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ime" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="prezime" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="oib" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="kontaktBroj" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="adresa" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="prebivaliste" Type="int" Nullable="false" />
+          <Property Name="uloga" Type="int" Nullable="false" />
+          <Property Name="korisnickiRacun" Type="int" Nullable="false" />
+          <Property Name="odjel" Type="int" Nullable="false" />
+          <Property Name="poduzece" Type="int" />
+        </EntityType>
+        <EntityType Name="Korisnicki_racuni">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lozinka" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Korisnici_Korisnicki_racuni">
+          <End Role="Korisnicki_racuni" Type="Self.Korisnicki_racuni" Multiplicity="1" />
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnicki_racuni">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Korisnici">
+              <PropertyRef Name="korisnickiRacun" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Korisnici" EntityType="Self.Korisnici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Korisnicki_racuni" EntityType="Self.Korisnicki_racuni" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Korisnici_Korisnicki_racuni" Association="Self.FK_Korisnici_Korisnicki_racuni">
+            <End Role="Korisnicki_racuni" EntitySet="Korisnicki_racuni" />
+            <End Role="Korisnici" EntitySet="Korisnici" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Korisnici">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ime" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prezime" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="oib" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kontaktBroj" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="adresa" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prebivaliste" Type="Int32" Nullable="false" />
+          <Property Name="uloga" Type="Int32" Nullable="false" />
+          <Property Name="korisnickiRacun" Type="Int32" Nullable="false" />
+          <Property Name="odjel" Type="Int32" Nullable="false" />
+          <Property Name="poduzece" Type="Int32" />
+          <NavigationProperty Name="Korisnicki_racuni" Relationship="Self.FK_Korisnici_Korisnicki_racuni" FromRole="Korisnici" ToRole="Korisnicki_racuni" />
+        </EntityType>
+        <EntityType Name="Korisnicki_racuni">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lozinka" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Korisnici" Relationship="Self.FK_Korisnici_Korisnicki_racuni" FromRole="Korisnicki_racuni" ToRole="Korisnici" />
+        </EntityType>
+        <Association Name="FK_Korisnici_Korisnicki_racuni">
+          <End Role="Korisnicki_racuni" Type="Self.Korisnicki_racuni" Multiplicity="1" />
+          <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnicki_racuni">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Korisnici">
+              <PropertyRef Name="korisnickiRacun" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EntitiesDB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Korisnici" EntityType="Self.Korisnici" />
+          <EntitySet Name="Korisnicki_racuni" EntityType="Self.Korisnicki_racuni" />
+          <AssociationSet Name="FK_Korisnici_Korisnicki_racuni" Association="Self.FK_Korisnici_Korisnicki_racuni">
+            <End Role="Korisnicki_racuni" EntitySet="Korisnicki_racuni" />
+            <End Role="Korisnici" EntitySet="Korisnici" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="EntitiesDB">
+          <EntitySetMapping Name="Korisnici">
+            <EntityTypeMapping TypeName="Model.Korisnici">
+              <MappingFragment StoreEntitySet="Korisnici">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ime" ColumnName="ime" />
+                <ScalarProperty Name="prezime" ColumnName="prezime" />
+                <ScalarProperty Name="oib" ColumnName="oib" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="kontaktBroj" ColumnName="kontaktBroj" />
+                <ScalarProperty Name="adresa" ColumnName="adresa" />
+                <ScalarProperty Name="prebivaliste" ColumnName="prebivaliste" />
+                <ScalarProperty Name="uloga" ColumnName="uloga" />
+                <ScalarProperty Name="korisnickiRacun" ColumnName="korisnickiRacun" />
+                <ScalarProperty Name="odjel" ColumnName="odjel" />
+                <ScalarProperty Name="poduzece" ColumnName="poduzece" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Korisnicki_racuni">
+            <EntityTypeMapping TypeName="Model.Korisnicki_racuni">
+              <MappingFragment StoreEntitySet="Korisnicki_racuni">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="lozinka" ColumnName="lozinka" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
